@@ -30,7 +30,8 @@ gem "simple_form"
 gem "devise"
 gem "flutie"
 gem "active_interaction"
-
+gem "griddler"
+gem "griddler-postmark"
 group :production, :staging do
   gem "postmark-rails"
   gem "unicorn"

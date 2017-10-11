@@ -136,6 +136,11 @@ GEM
     get_process_mem (0.2.1)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
+    griddler (1.4.0)
+      htmlentities
+      rails (>= 3.2.0)
+    griddler-postmark (1.0.0)
+      griddler
     guard (2.14.1)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
@@ -154,6 +159,7 @@ GEM
     guard-minitest (2.4.6)
       guard-compat (~> 1.2)
       minitest (>= 3.0)
+    htmlentities (4.3.4)
     http_parser.rb (0.6.0)
     i18n (0.8.6)
     iniparse (1.4.4)
@@ -395,6 +401,8 @@ DEPENDENCIES
   dotenv-rails (>= 2.0.0)
   flutie
   font-awesome-rails
+  griddler
+  griddler-postmark
   guard (>= 2.2.2)
   guard-livereload
   guard-minitest
