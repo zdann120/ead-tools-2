@@ -23,6 +23,7 @@
 
 class Appointment < ApplicationRecord
   include AASM
+  after_create :log_create_action
 
   belongs_to :user
   has_many :activities, as: :actionable
@@ -74,6 +75,11 @@ class Appointment < ApplicationRecord
     comment = "Status change: '#{aasm.from_state}' to '#{aasm.to_state}'"
     activities
       .create(action: aasm.current_event, user_id: current_user.try(:id), comment: comment)
+  end
+
+  def log_create_action
+    activities.
+      create(action: 'create', user_id: user.id, comment: 'Appointment request created.')
   end
 
   def set_default_status
