@@ -9,7 +9,7 @@ class EmailProcessor
       return unless appointment
       case @email.body
       when 'approve'
-        appointment.update(status: :approved)
+        appointment.approve!
       end
     end
   end
