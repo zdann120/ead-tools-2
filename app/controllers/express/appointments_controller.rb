@@ -2,6 +2,7 @@ class Express::AppointmentsController < ApplicationController
   def authenticate
     @user = current_user
     if @user
+      session[:email] = nil
       redirect_to new_express_appointment_url
     else
       @user = User.find_by_email(params[:user][:email])

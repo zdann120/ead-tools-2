@@ -1,11 +1,11 @@
 - provide(:title, 'Request an Appointment')
 - if session[:email]
-  - if @user_exists
-    div.alert.alert-info This email belongs to an existing user. Would you like
-      to #{link_to 'login', new_user_session_path} first?
   p.lead <strong>Email:</strong> #{@email}
   = simple_form_for @appointment, url: express_appointments_path do |f|
     - unless current_user
+      - if @user_exists
+        div.alert.alert-info This email belongs to an existing user. Would you like
+          to #{link_to 'login', new_user_session_path} first?
       .row
         .col-sm-6
           = f.input :first_name

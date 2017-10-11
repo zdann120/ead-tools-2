@@ -1,3 +1,6 @@
 - provide(:title, "Home")
 - if current_user
   p.lead Hello, #{current_user.first_name}!
+- else
+  = link_to 'Request an Appointment', new_express_appointment_path,
+    class: 'btn btn-primary btn-lg'
