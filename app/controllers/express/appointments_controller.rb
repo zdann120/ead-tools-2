@@ -1,4 +1,5 @@
 class Express::AppointmentsController < ApplicationController
+  before_action :set_time_zone
   def authenticate
     @user = current_user
     if @user
@@ -39,5 +40,9 @@ class Express::AppointmentsController < ApplicationController
     params.
       require(:new_appointment).
       permit(:requested_datetime, :comments, :email, :first_name, :last_name)
+  end
+
+  def set_time_zone
+    Time.zone = 'America/Detroit'
   end
 end
