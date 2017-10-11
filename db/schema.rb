@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171011084827) do
+ActiveRecord::Schema.define(version: 20171011205826) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "activities", force: :cascade do |t|
+    t.string "actionable_type"
+    t.bigint "actionable_id"
+    t.string "action", null: false
+    t.bigint "user_id"
+    t.text "comment"
+    t.uuid "uuid", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["actionable_type", "actionable_id"], name: "index_activities_on_actionable_type_and_actionable_id"
+    t.index ["user_id"], name: "index_activities_on_user_id"
+  end
 
   create_table "appointments", force: :cascade do |t|
     t.bigint "user_id"
@@ -47,5 +60,6 @@ ActiveRecord::Schema.define(version: 20171011084827) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "activities", "users"
   add_foreign_key "appointments", "users"
 end

@@ -25,6 +25,7 @@ class Appointment < ApplicationRecord
   include AASM
 
   belongs_to :user
+  has_many :activities, as: :actionable
 
   has_secure_token
 
@@ -35,6 +36,8 @@ class Appointment < ApplicationRecord
   aasm column: :status, enum: true do
     state :pending_approval, initial: true
     state :approved, :denied, :canceled, :rescheduled, :no_show, :completed
+
+    after_all_transitions :log_status_change
 
     event :approve do
       transitions from: :pending_approval, to: :approved
@@ -66,6 +69,12 @@ class Appointment < ApplicationRecord
   end
 
   private
+
+  def log_status_change(current_user=nil)
+    comment = "Status change: '#{aasm.from_state}' to '#{aasm.to_state}'"
+    activities
+      .create(action: aasm.current_event, user_id: current_user.try(:id), comment: comment)
+  end
 
   def set_default_status
     self.status = :pending_approval

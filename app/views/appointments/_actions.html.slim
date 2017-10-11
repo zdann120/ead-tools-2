@@ -1,0 +1,11 @@
+h5 Action Log
+table.table.table-sm.table-bordered
+  thead
+    tr
+      th Action
+      th Comment
+  tbody
+    - actions.each do |action|
+      tr
+        td = action.action
+        td = action.comment
