@@ -4,5 +4,5 @@
   - mailers
 :schedule:
   mark_completed:
-    every: '1h'
+    every: '10m'
     class: MarkCompletedJob

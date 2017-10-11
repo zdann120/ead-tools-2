@@ -4,7 +4,7 @@ class MarkCompletedJob < ApplicationJob
   def perform
     @appointments = Appointment.all.
       where(status: :approved).
-      where('requested_datetime < ?', Time.zone.now.to_datetime)
+      where("(requested_datetime + interval '1 hour') < ?", Time.zone.now.to_datetime)
 
     @appointments.each do |appointment|
       appointment.mark_complete!
