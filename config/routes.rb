@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     get 'restart', to: 'appointments#clear_session_email'
   end
   devise_for :users
+  require 'sidekiq-scheduler/web'
   mount Sidekiq::Web => "/sidekiq" # monitoring console
 
   root "home#index"

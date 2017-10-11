@@ -33,6 +33,8 @@ gem "active_interaction"
 gem "griddler"
 gem "griddler-postmark"
 gem 'aasm'
+gem "sidekiq-scheduler"
+
 group :production, :staging do
   gem "postmark-rails"
   gem "unicorn"

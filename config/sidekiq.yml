@@ -2,3 +2,7 @@
 :queues:
   - default
   - mailers
+schedule:
+  mark_completed:
+    every: '1h'
+    class: MarkCompletedJob
