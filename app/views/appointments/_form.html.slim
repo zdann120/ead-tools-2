@@ -1,0 +1,9 @@
+= simple_form_for(@appointment) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :requested_datetime
+    = f.input :comments
+
+  .form-actions
+    = f.button :submit

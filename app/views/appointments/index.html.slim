@@ -1,0 +1,25 @@
+- provide(:title, 'Your Appointments')
+table.table.table-striped.table-hover
+  thead
+    tr
+      th Requested Date
+      th Status
+      th
+      th
+
+  tbody
+    - @appointments.each do |appointment|
+      tr
+        td = appointment.requested_datetime.strftime('%e-%b-%Y at %I:%M%p')
+        td = appointment.status.upcase
+        td = link_to 'Show', appointment
+        td
+          - unless appointment.canceled
+            = link_to 'Cancel', cancel_appointment_path(appointment),
+              data: { confirm: 'Are you sure?' }, method: :patch
+          - else
+            | (Cancel)
+
+br
+
+= link_to 'New Appointment', new_express_appointment_path

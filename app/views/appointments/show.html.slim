@@ -1,0 +1,30 @@
+- provide(:title, "Appointment Confirmation")
+p.lead Thanks for requesting an appointmentment, #{@appointment.user.full_name}!
+hr
+- if @appointment.canceled
+  div.alert.alert-danger
+    | This appointment has been canceled.
+div.alert.alert-warning
+  strong
+    ' Your confirmation number is:
+  code
+    = @appointment.token
+p
+  strong Requested time:
+  br
+  = @appointment.requested_datetime.strftime('%e-%b-%Y at %I:%M%p')
+p
+  strong Comments:
+  br
+  = @appointment.comments
+p
+  strong Status
+  br
+  = @appointment.status.split('_').join(' ').upcase
+- if current_user == @appointment.user
+  - unless @appointment.canceled
+    hr
+    = link_to 'Cancel', cancel_appointment_path(@appointment),
+      class: 'btn btn-danger',
+      data: { confirm: 'Are you sure?' },
+      method: :patch
