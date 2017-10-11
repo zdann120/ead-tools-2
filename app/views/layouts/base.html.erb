@@ -10,27 +10,29 @@
                             :media => "all",
                             "data-turbolinks-track" => true) %>
 
-    <%# JavaScript must be in head for Turbolinks to work. %>
-    <%= javascript_include_async_tag("application",
-                                     "data-turbolinks-track" => true) %>
 
     <%= yield(:head) %>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%# Specifies the default name of home screen bookmark in iOS 6+ %>
-    <meta name="apple-mobile-web-app-title" content="Euro America Tools">
+    <meta name="apple-mobile-web-app-title" content="EuroAmerica Tools">
 
     <%= csrf_meta_tags %>
 
     <title>
       <%= strip_tags(yield(:title)) + " – " if content_for?(:title) %>
-      Euro America Tools
+      EuroAmerica Tools
     </title>
   </head>
-  <body>
+  <body class="<%= body_class %>">
 
     <%= yield %>
+
+    <%# JavaScript must be in head for Turbolinks to work. %>
+    <%= javascript_include_async_tag("application",
+                                     "data-turbolinks-track" => true) %>
+    <%= yield(:javascript) %>
 
   </body>
 </html>
