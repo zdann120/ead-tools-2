@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  ActiveAdmin.routes(self)
   resources :appointments, except: [:destroy, :edit, :update] do
     patch 'cancel', on: :member
   end

@@ -13,12 +13,10 @@
           = f.input :last_name
     = f.hidden_field :email, value: @email
     .row
-      .col-md-3
-        = f.label 'Requested date'
-        br
-        = f.date_select :requested_datetime, label: 'Requested date',
-          class: 'form-control'
-      .col-md-3
+      .col-md-6
+        = f.input :requested_datetime, label: 'Requested date',
+          ampm: true, minute_step: 15
+      /.col-md-3
         = f.label "Requested time"
         br
         = f.time_select :requested_datetime, ampm: true,
