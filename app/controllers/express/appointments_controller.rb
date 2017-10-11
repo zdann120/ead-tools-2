@@ -18,6 +18,6 @@ class Express::AppointmentsController < ApplicationController
   def appointment_params
     params.
       require(:new_appointment).
-      permit(:requested_datetime, :comments, :email)
+      permit(:requested_datetime, :comments, :email, :first_name, :last_name)
   end
 end
