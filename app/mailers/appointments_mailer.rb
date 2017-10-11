@@ -26,4 +26,11 @@ class AppointmentsMailer < ApplicationMailer
       subject: 'EuroAmerica Design: New account',
       from: 'accounts@euroamerica.design'
   end
+
+  def admin_approve_appointment(appointment)
+    @appointment = appointment
+    mail to: 'zach@zdnenterprises.com',
+      subject: 'new appointment request',
+      from: 'appointments@euroamerica.design'
+  end
 end

@@ -1,0 +1,7 @@
+h1 You have a new appointment request
+p Date: #{@appointment.requested_datetime}
+p Comments: #{@appointment.comments}
+p
+  = link_to 'CLICK HERE ',
+    "mailto:appts-mail@euroamerica.design?subject=#{@appointment.token}&body=approve"
+  | to approve this request.

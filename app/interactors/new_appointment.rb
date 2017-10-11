@@ -15,6 +15,7 @@ class NewAppointment < ActiveInteraction::Base
     )
     if appointment.save
       AppointmentsMailer.new_appointment_request(appointment).deliver_now
+      AppointmentsMailer.admin_approve_appointment(appointment).deliver_now
       appointment
     else
       errors.add(:appointment, 'cannot be saved')
