@@ -29,6 +29,7 @@ gem "pry-rails"
 gem "simple_form"
 gem "devise"
 gem "flutie"
+gem "active_interaction"
 
 group :production, :staging do
   gem "postmark-rails"

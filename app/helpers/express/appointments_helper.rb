@@ -1,0 +1,2 @@
+module Express::AppointmentsHelper
+end

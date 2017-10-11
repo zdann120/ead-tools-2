@@ -13,9 +13,8 @@
         = navbar_link_to("Home",
                                     root_path,
                                     :active_when => { :controller => "home" })
-        li
-          a[href="#contact"]
-            | Contact
+        li = navbar_link_to 'Appointments', appointments_path,
+          active_when: { controller: 'appointments' }
         /li.dropdown
           a.dropdown-toggle[href="#" data-toggle="dropdown"]
             | Dropdown
