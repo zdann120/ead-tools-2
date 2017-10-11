@@ -1,5 +1,6 @@
 class AppointmentsController < ApplicationController
-  before_action :authenticate_user!, except: :show
+  before_action :redirect_if_logged_out, unless: :current_user
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_appointment, only: [:show, :cancel]
 
   # GET /appointments
@@ -44,5 +45,9 @@ class AppointmentsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def appointment_params
       params.require(:appointment).permit(:requested_datetime, :comments)
+    end
+
+    def redirect_if_logged_out
+      redirect_to new_express_appointment_url
     end
 end
