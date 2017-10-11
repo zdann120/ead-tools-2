@@ -14,6 +14,7 @@ class NewAppointment < ActiveInteraction::Base
       comments: comments
     )
     if appointment.save
+      AppointmentsMailer.new_appointment_request(appointment).deliver_now
       appointment
     else
       errors.add(:appointment, 'cannot be saved')
@@ -23,10 +24,22 @@ class NewAppointment < ActiveInteraction::Base
   private
 
   def set_user(email)
+    if User.exists?(email: email)
+      is_new = false
+    else
+      is_new = true
+    end
+    password = SecureRandom.uuid
     user = User.
-      create_with(password: SecureRandom.uuid, first_name: first_name,
+      create_with(password: password, first_name: first_name,
                  last_name: last_name).
       find_or_create_by!(email: email)
+
+    if is_new
+      AppointmentsMailer.new_account_through_express(user, password).
+        deliver_now
+    end
     user
   end
+
 end

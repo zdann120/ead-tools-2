@@ -38,6 +38,7 @@ group :production, :staging do
 end
 
 group :development do
+  gem "letter_opener"
   gem "annotate", ">= 2.5.0"
   gem "awesome_print"
   gem "bcrypt_pbkdf", :require => false

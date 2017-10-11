@@ -1,0 +1,17 @@
+p Hello #{@appointment.user.full_name},
+p Thank you for requesting an appointment with EuroAmerica Design.
+p To view the status of your appointment request:
+ol
+  li Visit #{appointment_url(@appointment)}
+  li or, log into your online portal and click "Appointments".
+hr
+table
+  thead
+    tr
+      th Requested Date
+      th Comments
+  tbody
+    tr
+      td = @appointment.requested_datetime
+      td = @appointment.comments
+p Confirmation Code: #{@appointment.token}
