@@ -32,6 +32,7 @@ gem "flutie"
 gem "active_interaction"
 gem "griddler"
 gem "griddler-postmark"
+gem 'aasm'
 group :production, :staging do
   gem "postmark-rails"
   gem "unicorn"

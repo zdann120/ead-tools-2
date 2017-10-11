@@ -22,7 +22,7 @@ p
   br
   = @appointment.status.split('_').join(' ').upcase
 - if current_user == @appointment.user
-  - unless @appointment.canceled
+  - if @appointment.may_cancel?
     hr
     = link_to 'Cancel', cancel_appointment_path(@appointment),
       class: 'btn btn-danger',

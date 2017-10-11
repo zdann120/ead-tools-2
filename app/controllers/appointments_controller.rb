@@ -29,7 +29,7 @@ class AppointmentsController < ApplicationController
   end
 
   def cancel
-    if @appointment.update(canceled: true, status: :canceled)
+    if @appointment.cancel!
       redirect_to @appointment
     else
       redirect_to @appointment, alert: 'Sorry, there was a problem canceling this appointment.'

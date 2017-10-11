@@ -23,11 +23,40 @@
 #
 
 class Appointment < ApplicationRecord
+  include AASM
+
   belongs_to :user
+
   has_secure_token
+
   enum status: [:pending_approval, :approved, :denied, :canceled, :rescheduled, :no_show, :completed]
+
   attribute :email, :string
-  before_create :set_default_status
+
+  aasm column: :status, enum: true do
+    state :pending_approval, initial: true
+    state :approved, :denied, :canceled, :rescheduled, :no_show, :completed
+
+    event :approve do
+      transitions from: :pending_approval, to: :approved
+    end
+
+    event :deny do
+      transitions from: :pending_approval, to: :denied
+    end
+
+    event :cancel do
+      transitions from: [:pending_approval, :approved], to: :canceled
+    end
+
+    event :mark_complete do
+      transitions from: :approved, to: :completed
+    end
+
+    event :mark_no_show do
+      transitions from: :approved, to: :no_show
+    end
+  end
 
   def to_param
     token
