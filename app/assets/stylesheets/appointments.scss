@@ -1,0 +1,19 @@
+.appointments-index {
+  .simple-calendar {
+    li.apt-canceled {
+      text-decoration: line-through;
+    }
+    li.apt-pending_approval {
+      color: grey;
+      text-decoration: wavy underline black;
+    }
+
+    li.apt-approved {
+      text-decoration: wavy underline green;
+    }
+
+    li.apt-denied {
+      text-decoration: wavy underline red;
+    }
+  }
+}

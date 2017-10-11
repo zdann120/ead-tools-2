@@ -1,15 +1,32 @@
 - provide(:title, 'Request an Appointment')
-p.lead Email: #{@email}
 - if session[:email]
+  - if @user_exists
+    div.alert.alert-info This email belongs to an existing user. Would you like
+      to #{link_to 'login', new_user_session_path} first?
+  p.lead <strong>Email:</strong> #{@email}
   = simple_form_for @appointment, url: express_appointments_path do |f|
     - unless current_user
-      = f.input :first_name
-      = f.input :last_name
+      .row
+        .col-sm-6
+          = f.input :first_name
+        .col-sm-6
+          = f.input :last_name
     = f.hidden_field :email, value: @email
-    = f.input :requested_datetime, label: 'Requested date', ampm: true,
-      minute_step: 15
-    = f.input :comments
-    = f.submit 'Request Appointment'
+    .row
+      .col-md-3
+        = f.label 'Requested date'
+        br
+        = f.date_select :requested_datetime, label: 'Requested date',
+          class: 'form-control'
+      .col-md-3
+        = f.label "Requested time"
+        br
+        = f.time_select :requested_datetime, ampm: true,
+          minute_step: 15, ignore_date: true
+
+      .col-md-6
+        = f.input :comments
+    = f.submit 'Request Appointment', class: 'btn btn-success'
 - else
   = simple_form_for :user, url: express_authenticate_path,
     method: :post do |f|

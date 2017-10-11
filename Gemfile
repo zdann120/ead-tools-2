@@ -34,6 +34,7 @@ gem "griddler"
 gem "griddler-postmark"
 gem 'aasm'
 gem "sidekiq-scheduler"
+gem "simple_calendar"
 
 group :production, :staging do
   gem "postmark-rails"

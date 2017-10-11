@@ -19,6 +19,7 @@ class Express::AppointmentsController < ApplicationController
     @appointment = NewAppointment.new
     @email = current_user.try(:email)
     @email ||= session[:email]
+    @user_exists = User.exists?(email: @email)
   end
 
   def create
