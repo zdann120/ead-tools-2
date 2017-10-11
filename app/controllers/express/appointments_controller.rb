@@ -1,5 +1,4 @@
 class Express::AppointmentsController < ApplicationController
-  before_action :set_time_zone
   def authenticate
     @user = current_user
     if @user
