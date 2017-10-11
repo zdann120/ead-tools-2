@@ -1,12 +1,17 @@
 - provide(:title, 'Request an Appointment')
-= simple_form_for @appointment, url: express_appointments_path do |f|
-  - unless current_user
-    = f.input :first_name
-    = f.input :last_name
-    = f.input :email
-  - else
-    = f.hidden_field :email, value: current_user.email
-  = f.input :requested_datetime, label: 'Requested date', ampm: true,
-    minute_step: 15
-  = f.input :comments
-  = f.submit 'Request Appointment'
+p.lead Email: #{@email}
+- if session[:email]
+  = simple_form_for @appointment, url: express_appointments_path do |f|
+    - unless current_user
+      = f.input :first_name
+      = f.input :last_name
+    = f.hidden_field :email, value: @email
+    = f.input :requested_datetime, label: 'Requested date', ampm: true,
+      minute_step: 15
+    = f.input :comments
+    = f.submit 'Request Appointment'
+- else
+  = simple_form_for :user, url: express_authenticate_path,
+    method: :post do |f|
+    = f.input :email, as: :string
+    = f.submit 'Begin', class: 'btn btn-success'

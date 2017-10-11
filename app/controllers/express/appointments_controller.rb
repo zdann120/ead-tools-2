@@ -1,6 +1,24 @@
 class Express::AppointmentsController < ApplicationController
+  def authenticate
+    @user = current_user
+    if @user
+      redirect_to new_express_appointment_url
+    else
+      @user = User.find_by_email(params[:user][:email])
+      session[:email] = params[:user][:email]
+      redirect_to new_express_appointment_url
+    end
+  end
+
+  def clear_session_email
+    session[:email] = nil
+    redirect_to new_express_appointment_url
+  end
+
   def new
     @appointment = NewAppointment.new
+    @email = current_user.try(:email)
+    @email ||= session[:email]
   end
 
   def create

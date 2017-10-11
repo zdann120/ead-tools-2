@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   end
   namespace :express do
     resources :appointments, only: [:new, :create]
+    post 'authenticate', to: 'appointments#authenticate'
+    get 'restart', to: 'appointments#clear_session_email'
   end
   devise_for :users
   mount Sidekiq::Web => "/sidekiq" # monitoring console
