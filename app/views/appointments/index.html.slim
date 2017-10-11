@@ -14,7 +14,7 @@ table.table.table-striped.table-hover
         td = appointment.status.upcase
         td = link_to 'Show', appointment
         td
-          - unless appointment.canceled
+          - if appointment.may_cancel?
             = link_to 'Cancel', cancel_appointment_path(appointment),
               data: { confirm: 'Are you sure?' }, method: :patch
           - else

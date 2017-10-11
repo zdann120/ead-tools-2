@@ -1,7 +1,7 @@
 - provide(:title, "Appointment Confirmation")
 p.lead Thanks for requesting an appointmentment, #{@appointment.user.full_name}!
 hr
-- if @appointment.canceled
+- if @appointment.canceled?
   div.alert.alert-danger
     | This appointment has been canceled.
 div.alert.alert-warning

@@ -2,7 +2,6 @@
 #
 # Table name: appointments
 #
-#  canceled           :boolean          default(FALSE)
 #  comments           :text
 #  created_at         :datetime         not null
 #  id                 :integer          not null, primary key
