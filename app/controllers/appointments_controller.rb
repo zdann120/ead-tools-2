@@ -1,5 +1,5 @@
 class AppointmentsController < ApplicationController
-  before_action :redirect_if_logged_out, unless: :current_user
+  before_action :redirect_if_logged_out, unless: :current_user, only: :index
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_appointment, only: [:show, :cancel]
 
