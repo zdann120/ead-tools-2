@@ -38,7 +38,7 @@ class Express::AppointmentsController < ApplicationController
   def appointment_params
     params.
       require(:new_appointment).
-      permit(:requested_datetime, :comments, :email, :first_name, :last_name)
+      permit(:requested_date, :requested_time, :comments, :email, :first_name, :last_name)
   end
 
   def set_time_zone

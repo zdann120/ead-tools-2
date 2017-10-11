@@ -27,7 +27,8 @@ ActiveAdmin.register Appointment do
     end
 
     inputs 'Appointment' do
-      input :requested_datetime
+      input :requested_date
+      input :requested_time
       input :comments
     end
 

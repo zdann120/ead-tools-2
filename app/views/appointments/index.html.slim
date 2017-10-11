@@ -1,12 +1,12 @@
 - provide(:title, 'Your Appointments')
 
-= week_calendar number_of_weeks: 2, attribute: :requested_datetime,
+= week_calendar number_of_weeks: 2, attribute: :requested_date,
   events: @appointments do |date, appointments|
   = date.strftime('%b %d')
   ul
   - appointments.each do |apt|
     li[class="apt-#{apt.status}"]
-      = apt.requested_datetime.strftime('%I:%M %p')
+      = apt.requested_time.strftime('%I:%M %p')
       | (#{link_to 'view', apt})
 
 br

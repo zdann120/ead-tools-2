@@ -2,14 +2,15 @@
 #
 # Table name: appointments
 #
-#  comments           :text
-#  created_at         :datetime         not null
-#  id                 :integer          not null, primary key
-#  requested_datetime :datetime         not null
-#  status             :integer
-#  token              :string
-#  updated_at         :datetime         not null
-#  user_id            :integer
+#  comments       :text
+#  created_at     :datetime         not null
+#  id             :integer          not null, primary key
+#  requested_date :date
+#  requested_time :time
+#  status         :integer
+#  token          :string
+#  updated_at     :datetime         not null
+#  user_id        :integer
 #
 # Indexes
 #

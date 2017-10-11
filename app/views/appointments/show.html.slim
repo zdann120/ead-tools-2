@@ -12,7 +12,7 @@ div.alert.alert-warning
 p
   strong Requested time:
   br
-  = @appointment.requested_datetime.strftime('%e-%b-%Y at %I:%M%p')
+  | #{@appointment.requested_date.strftime('%e-%b-%Y')} at #{@appointment.requested_time.strftime('%I:%M%p')}
 p
   strong Comments:
   br

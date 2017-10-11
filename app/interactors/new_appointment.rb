@@ -2,15 +2,17 @@ class NewAppointment < ActiveInteraction::Base
   string :first_name, default: nil
   string :last_name, default: nil
   string :email
-  date_time :requested_datetime
+  date :requested_date
+  time :requested_time
   string :comments
 
-  validates :email, :requested_datetime, presence: true
+  validates :email, :requested_date, :requested_time, presence: true
 
   def execute
     user = set_user(email)
     appointment = user.appointments.new(
-      requested_datetime: requested_datetime,
+      requested_date: requested_date,
+      requested_time: requested_time,
       comments: comments
     )
     if appointment.save
