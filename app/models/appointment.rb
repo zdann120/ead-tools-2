@@ -76,6 +76,7 @@ class Appointment < ApplicationRecord
     comment = "Status change: '#{aasm.from_state}' to '#{aasm.to_state}'"
     activities
       .create(action: aasm.current_event, user_id: current_user.try(:id), comment: comment)
+    AppointmentsMailer.status_change(self, aasm.to_state).deliver_now
   end
 
   def log_create_action

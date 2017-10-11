@@ -1,4 +1,5 @@
 class AppointmentsMailer < ApplicationMailer
+  add_template_helper ApplicationHelper
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
@@ -32,5 +33,14 @@ class AppointmentsMailer < ApplicationMailer
     mail to: 'zach@zdnenterprises.com',
       subject: 'new appointment request',
       from: 'appointments@euroamerica.design'
+  end
+
+  def status_change(appointment, status = nil)
+    @appointment = appointment
+    @status = status
+    mail to: appointment.user.email,
+      subject: 'Update: Your appointment at EuroAmerica Design',
+      from: '"EuroAmerica Design" <appointments@euroamerica.design>',
+      bcc: 'zdnenterprises@gmail.com'
   end
 end

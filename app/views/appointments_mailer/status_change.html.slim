@@ -1,0 +1,10 @@
+h1 Hello #{@appointment.user.full_name},
+p
+  strong Please read the following message about your appointment request:
+p
+  ' You requested an appointment on <u>#{@appointment.requested_date}</u> at
+  | #{@appointment.requested_time}.
+p The status of your request is <strong><u>#{@status.upcase}</strong></u>
+h2 Message(s)
+ul
+  li = action_message_from_status(@status.to_s)

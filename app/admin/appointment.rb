@@ -7,14 +7,15 @@ ActiveAdmin.register Appointment do
 # or
 #
   permit_params do
-    permitted = [:user_id, :requested_datetime, :comments]
+    permitted = [:user_id, :requested_date, :requested_time, :comments]
     permitted << :other if params[:action] == 'create' && current_user.admin?
     permitted
   end
 
   index do
     selectable_column
-    column :requested_datetime
+    column :requested_date
+    column :requested_time
     column :user
     column :comments
     column :status

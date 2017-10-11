@@ -9,9 +9,12 @@ table
   thead
     tr
       th Requested Date
+      th Time
       th Comments
   tbody
     tr
       td = @appointment.requested_date
+      td = @appointment.requested_time
       td = @appointment.comments
+hr
 p Confirmation Code: #{@appointment.token}
