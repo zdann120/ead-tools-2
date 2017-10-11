@@ -2,7 +2,7 @@
 :queues:
   - default
   - mailers
-schedule:
+:schedule:
   mark_completed:
     every: '1h'
     class: MarkCompletedJob
