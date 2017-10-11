@@ -6,7 +6,6 @@ class NewAppointment < ActiveInteraction::Base
   string :comments
 
   validates :email, :requested_datetime, presence: true
-  validates :first_name, :last_name, presence: true, if: :names_present?
 
   def execute
     user = set_user(email)
@@ -22,10 +21,6 @@ class NewAppointment < ActiveInteraction::Base
   end
 
   private
-
-  def names_present?
-    !User.exists?(email: email)
-  end
 
   def set_user(email)
     user = User.
