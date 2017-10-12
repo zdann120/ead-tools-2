@@ -1,0 +1,24 @@
+class AppointmentDecorator < Draper::Decorator
+  delegate_all
+
+  # Define presentation-specific methods here. Helpers are accessed through
+  # `helpers` (aka `h`). You can override attributes, for example:
+  #
+  #   def created_at
+  #     helpers.content_tag :span, class: 'time' do
+  #       object.created_at.strftime("%a %m/%d/%y")
+  #     end
+  #   end
+  def requested_date
+    object.requested_date.strftime('%b %d, %Y')
+  end
+
+  def requested_time
+    object.requested_time.strftime('%I:%M %p')
+  end
+
+  def status
+    object.status.split('_').join(' ')
+  end
+
+end

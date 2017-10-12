@@ -1,4 +1,5 @@
 source "https://rubygems.org"
+ruby "2.4.2"
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -36,6 +37,7 @@ gem 'aasm'
 gem "sidekiq-scheduler"
 gem "simple_calendar"
 gem "activeadmin", "~> 1.1"
+gem "draper", github: "drapergem/draper"
 
 group :production, :staging do
   gem "postmark-rails"

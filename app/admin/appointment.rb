@@ -1,4 +1,5 @@
 ActiveAdmin.register Appointment do
+  decorate_with AppointmentDecorator
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
@@ -40,7 +41,8 @@ ActiveAdmin.register Appointment do
     h3 "Appointment ID: "+ appointment.token
     attributes_table do
       row :user
-      row :requested_datetime
+      row :requested_date
+      row :requested_time
       row :comments
       row :status do |apt|
         status_tag apt.status

@@ -1,3 +1,14 @@
+GIT
+  remote: https://github.com/drapergem/draper.git
+  revision: cc236698893e79e655efdbc1165c011416259875
+  specs:
+    draper (3.0.0)
+      actionpack (~> 5.0)
+      activemodel (~> 5.0)
+      activemodel-serializers-xml (~> 1.0)
+      activesupport (~> 5.0)
+      request_store (~> 1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -47,6 +58,10 @@ GEM
       globalid (>= 0.3.6)
     activemodel (5.1.4)
       activesupport (= 5.1.4)
+    activemodel-serializers-xml (1.0.2)
+      activemodel (> 5.x)
+      activesupport (> 5.x)
+      builder (~> 3.1)
     activerecord (5.1.4)
       activemodel (= 5.1.4)
       activesupport (= 5.1.4)
@@ -323,6 +338,7 @@ GEM
     rbnacl-libsodium (1.0.13)
       rbnacl (>= 3.0.1)
     redis (4.0.1)
+    request_store (1.3.2)
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
@@ -459,6 +475,7 @@ DEPENDENCIES
   connection_pool
   devise
   dotenv-rails (>= 2.0.0)
+  draper!
   flutie
   font-awesome-rails
   griddler

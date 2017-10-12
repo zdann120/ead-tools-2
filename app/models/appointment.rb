@@ -27,7 +27,8 @@ class Appointment < ApplicationRecord
   after_create :log_create_action
 
   belongs_to :user
-  has_many :activities, as: :actionable
+  has_many :activities, as: :actionable,
+    dependent: :destroy
 
   has_secure_token
 

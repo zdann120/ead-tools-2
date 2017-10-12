@@ -7,7 +7,7 @@ class AppointmentsMailer < ApplicationMailer
   #   en.appointments_mailer.new_appointment_request.subject
   #
   def new_appointment_request(appointment)
-    @appointment = appointment
+    @appointment = appointment.decorate
 
     mail to: appointment.user.email,
       subject: 'EuroAmerica Design: Appointment request received',
@@ -29,14 +29,14 @@ class AppointmentsMailer < ApplicationMailer
   end
 
   def admin_approve_appointment(appointment)
-    @appointment = appointment
+    @appointment = appointment.decorate
     mail to: 'zach@zdnenterprises.com',
       subject: 'new appointment request',
       from: 'appointments@euroamerica.design'
   end
 
   def status_change(appointment, status = nil)
-    @appointment = appointment
+    @appointment = appointment.decorate
     @status = status
     mail to: appointment.user.email,
       subject: 'Update: Your appointment at EuroAmerica Design',
